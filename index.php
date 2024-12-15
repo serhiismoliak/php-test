@@ -43,7 +43,7 @@ $creationDate = date("d.m.Y");
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             color: #333;
         }
         h1, h2 {
