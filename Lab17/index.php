@@ -26,12 +26,6 @@
             width: 100%;
             margin-bottom: 10px;
         }
-        input {
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
         button {
             padding: 10px;
             font-size: 16px;
@@ -44,10 +38,26 @@
         button:hover {
             background-color: #0056b3;
         }
-        .normal { color: black; }
-        .waiting { color: orange; font-weight: bold; }
-        .valid { color: blue; font-weight: bold; }
-        .invalid { color: red; font-weight: bold; }
+        .normal {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid red;
+            border-radius: 4px;
+            background-color: #ffe6e6;
+        }
+        .success {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid green;
+            border-radius: 4px;
+            background-color: #e6ffe6;
+        }
     </style>
 </head>
 <body>
