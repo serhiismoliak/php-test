@@ -9,21 +9,17 @@ $E = [
 
 $flattenedE = array_merge(...$E);
 
-// Знаходимо всі від'ємні елементи
 $negatives = array_filter($flattenedE, function($value) {
     return $value < 0;
 });
 
-// Максимальний від'ємний елемент
 $maxNegative = max($negatives);
 
-// Створюємо нову матрицю відхилень
 $newMatrix = [];
 foreach ($flattenedE as $value) {
     $newMatrix[] = $value - $maxNegative;
 }
 
-// Знаходимо кількість від'ємних відхилень та їх добуток
 $negativeDeviations = array_filter($newMatrix, function($value) {
     return $value < 0;
 });
@@ -31,10 +27,8 @@ $negativeDeviations = array_filter($newMatrix, function($value) {
 $negativeCount = count($negativeDeviations);
 $negativeProduct = array_product($negativeDeviations);
 
-// Обчислюємо кубічний корінь із добутку від'ємних відхилень
 $cubicRootNegative = $negativeProduct < 0 ? -pow(abs($negativeProduct), 1/3) : pow($negativeProduct, 1/3);
 
-// Знаходимо суму додатних відхилень та квадратний корінь
 $positiveDeviations = array_filter($newMatrix, function($value) {
     return $value > 0;
 });
@@ -42,7 +36,6 @@ $positiveDeviations = array_filter($newMatrix, function($value) {
 $positiveSum = array_sum($positiveDeviations);
 $squareRootPositive = sqrt($positiveSum);
 
-// Функція для форматування чисел
 function formatNumber($number) {
     if (strlen((string) floor(abs($number))) > 12) {
         return sprintf("%.5e", $number);
