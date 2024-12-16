@@ -60,9 +60,9 @@
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $password = $_POST['password'];
+        $password = $_POST['password'] ?? '';
         $pattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/";
-        if (preg_match($pattern, $password)) {
+        if (!empty($password) && preg_match($pattern, $password)) {
             echo "<script>
                     document.getElementById('response').textContent = 'Password is valid';
                     document.getElementById('response').className = 'valid';
