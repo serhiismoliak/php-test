@@ -14,7 +14,7 @@ $colors = 9;
 
 
 function calculateY($a, $b, $c, $x) {
-    return $a * pow($x, 2) + pow(pow($c, 2), 1/3) + atan($b) + exp(max($a, $b));
+    return $a * $b * pow($x, 2) + pow(pow($c, 2), 1/3) + atan($a) + exp(max($a, $b));
 }
 
 
