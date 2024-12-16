@@ -20,10 +20,17 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            display: flex;
+            flex-direction: column;
         }
-        label, input, button {
+        label, button {
             display: block;
             width: 100%;
+            margin-bottom: 10px;
+        }
+        input {
+            display: block;
+            width: -webkit-fill-available;
             margin-bottom: 10px;
         }
         button {
@@ -81,8 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="password">Пароль:</label>
     <input type="password" id="password" placeholder="Пароль" name="passwordInput" class="<?php echo $inputClass; ?>" onfocus="resetInput(this)" required>
     <button type="submit">Перевірити</button>
+    <p id="checkResult"> <?php echo $message; ?> </p>
 </form>
-<p id="checkResult"> <?php echo $message; ?> </p>
 
 <script>
 function resetInput(input) {
