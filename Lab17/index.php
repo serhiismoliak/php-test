@@ -51,45 +51,24 @@
     </style>
 </head>
 <body>
-    <form id="passwordForm" method="post" action="">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Submit</button>
+    <form method="POST">
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" placeholder="Пароль" name="passwordInput" required>
+        <button type="submit">Перевірити</button>
     </form>
-    <p id="response" class="normal">Type a password and submit</p>
-
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $password = $_POST['password'] ?? '';
-        $pattern = "/^.{6,}$/";
-        if (!empty($password) && preg_match($pattern, $password)) {
-            echo "<script>
-                    document.getElementById('response').textContent = 'Password is valid';
-                    document.getElementById('response').className = 'valid';
-                  </script>";
-        } else {
-            echo "<script>
-                    document.getElementById('response').textContent = 'Password is invalid';
-                    document.getElementById('response').className = 'invalid';
-                  </script>";
+    <p id="checkResult">
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $password = $_POST['passwordInput'];
+            
+            $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/";
+            if (preg_match($pattern, $password)) {
+                echo "<span class='valid'>Пароль є правильним</span>";
+            } else {
+                echo "<span class='invalid'>Пароль не є правильним</span>";
+            }
         }
-        echo "<script>
-                document.getElementById('password').disabled = false;
-              </script>";
-    }
-    ?>
-
-    <script>
-        document.getElementById('passwordForm').addEventListener('submit', function() {
-            document.getElementById('password').disabled = true;
-            document.getElementById('response').textContent = 'Waiting for server response...';
-            document.getElementById('response').className = 'waiting';
-        });
-
-        document.getElementById('password').addEventListener('input', function() {
-            document.getElementById('response').textContent = 'Type a password and submit';
-            document.getElementById('response').className = 'normal';
-        });
-    </script>
+        ?>
+    </p>
 </body>
 </html>
