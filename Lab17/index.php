@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = "<span style="color: green">Пароль є правильним</span>";
     } else {
         $inputClass = "error";
-        $message = "<span style="color: red"'>Пароль є неправильним</span>";
+        $message = "<span style="color: red">Пароль є неправильним</span>";
     }
 }
 ?>
