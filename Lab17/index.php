@@ -73,9 +73,9 @@
             
             $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/";
             if (preg_match($pattern, $password)) {
-                echo "<span class='valid'>Пароль є правильним</span>";
+                echo "<span style="color: green">Пароль є правильним</span>";
             } else {
-                echo "<span class='invalid'>Пароль не є правильним</span>";
+                echo "<span style="color: red">Пароль не є правильним</span>";
             }
         }
         ?>
