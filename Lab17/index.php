@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['passwordInput'];
     $passwordValue = htmlspecialchars($password); // Sanitize input for security
     
-    $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/";
+    $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z_]{8,}$/";
     if (preg_match($pattern, $password)) {
         $inputClass = "success";
         $message = "<span style='color: green'>Пароль є правильним</span>";
