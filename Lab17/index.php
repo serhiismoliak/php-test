@@ -63,19 +63,21 @@
 <body>
     <form method="POST">
         <label for="password">Пароль:</label>
-        <input type="password" id="password" placeholder="Пароль" name="passwordInput" required>
+        <input type="password" id="password" placeholder="Пароль" name="passwordInput" 
+               value="<?php echo isset($_POST['passwordInput']) ? htmlspecialchars($_POST['passwordInput']) : ''; ?>" 
+               required>
         <button type="submit">Перевірити</button>
     </form>
     <p id="checkResult">
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $password = $_POST['passwordInput'];
-            
             $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/";
+
             if (preg_match($pattern, $password)) {
-                echo "<span style="color: green">Пароль є правильним</span>";
+                echo "<span style='color: green'>Пароль є правильним</span>";
             } else {
-                echo "<span style="color: red">Пароль не є правильним</span>";
+                echo "<span style='color: red'>Пароль не є правильним</span>";
             }
         }
         ?>
