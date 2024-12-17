@@ -24,7 +24,6 @@
             flex-direction: column;
         }
         label, input, button {
-        label, button {
             display: block;
             width: 100%;
             margin-bottom: 10px;
@@ -91,7 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit">Перевірити</button>
     <p id="checkResult"> <?php echo $message; ?> </p>
 </form>
-<p id="checkResult"> <?php echo $message; ?> </p>
 
 <script>
 function resetInput(input) {
