@@ -24,12 +24,15 @@
             flex-direction: column;
         }
         label, input, button {
+        label, button {
             display: block;
             width: 100%;
             margin-bottom: 10px;
         }
         input {
+            display: block;
             width: -webkit-fill-available;
+            margin-bottom: 10px;
         }
         button {
             padding: 10px;
@@ -69,32 +72,26 @@
 <?php
 $inputClass = "normal";
 $message = "";
-$passwordValue = "";
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['passwordInput'];
-    $passwordValue = htmlspecialchars($password); // Sanitize input for security
-    
-    $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z_]{8,}$/";
+    $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/";
     if (preg_match($pattern, $password)) {
         $inputClass = "success";
-        $message = "<span style='color: green'>Пароль є правильним</span>";
+        $message = "<span style="color: green">Пароль є правильним</span>";
     } else {
         $inputClass = "error";
-        $message = "<span style='color: red'>Пароль є неправильним</span>";
+        $message = "<span style="color: red"'>Пароль є неправильним</span>";
     }
 }
 ?>
 
 <form method="POST">
     <label for="password">Пароль:</label>
-    <input type="password" id="password" placeholder="Пароль" name="passwordInput" 
-           class="<?php echo $inputClass; ?>" 
-           value="<?php echo $passwordValue; ?>" 
-           onfocus="resetInput(this)" required>
+    <input type="password" id="password" placeholder="Пароль" name="passwordInput" class="<?php echo $inputClass; ?>" onfocus="resetInput(this)" required>
     <button type="submit">Перевірити</button>
-    <p id="checkResult"><?php echo $message; ?></p>
+    <p id="checkResult"> <?php echo $message; ?> </p>
 </form>
+<p id="checkResult"> <?php echo $message; ?> </p>
 
 <script>
 function resetInput(input) {
