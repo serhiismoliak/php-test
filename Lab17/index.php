@@ -77,10 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/";
     if (preg_match($pattern, $password)) {
         $inputClass = "success";
-        $message = "<span style="color: green">Пароль є правильним</span>";
+        $message = "<span style='color: green'>Пароль є правильним</span>";
     } else {
         $inputClass = "error";
-        $message = "<span style="color: red">Пароль є неправильним</span>";
+        $message = "<span style='color: red'>Пароль є неправильним</span>";
     }
 }
 ?>
